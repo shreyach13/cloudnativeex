@@ -1,0 +1,38 @@
+---
+# tasks file for roles/jenkins
+- name: install default-jre
+  package:
+    name: default-jre
+    state: present
+
+- name: Download Jenkins war file
+  get_url:
+    url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+    dest: /usr/local/etc
+    mode: '0440'
+
+
+- name: Template a file to /etc/systemd/system/jenkins.service
+  template:
+    src: myTemplate.yml
+    dest: /etc/systemd/system/jenkins.service
+  notify:
+    - restart jenkins service
+
+- name: Force all notified handlers to run at this point, not waiting for normal sync points
+  meta: flush_handlers
+
+- name: Wait until the file /root/.jenkins/secrets/initialAdminPassword is present before continuing
+  wait_for:
+    path: /root/.jenkins/secrets/initialAdminPassword
+
+- name: Run a command that uses non-posix shell-isms (in this example /bin/sh doesn't handle redirection and wildcards together but bash does)
+  shell: cat /root/.jenkins/secrets/initialAdminPassword
+  register: foo_result
+- debug:
+    msg: Password is  {{ foo_result.stdout }}
+
+- name: enable service httpd and ensure it is not masked
+  systemd:
+    name: jenkins
+    enabled: yes
