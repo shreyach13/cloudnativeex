@@ -14,3 +14,10 @@ to make sure you can trace which image is yours.
 
 Remember, its easier to make the name of the image descriptive.
 
+
+- [ ] Navigate to the directory where ami.json is downloaded.
+
+- [ ] Run "packer validate" to valdiate the packer code
+
+- [ ] Run "packer build" to build you AMI. Check in AWS console for the new ami created (make sure that you are in correct region)
+
