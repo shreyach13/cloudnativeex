@@ -133,7 +133,6 @@ aws ecr get-login --region <region> --no-include-email
 - [ ] Tag your Jenkins image 
 
 ```
-
 docker tag <Image ID> <repository URL>/<repo name>
 
 Example:
