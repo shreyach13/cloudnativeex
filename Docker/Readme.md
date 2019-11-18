@@ -107,6 +107,19 @@ Upload your Jenkins image to ECR
 aws ecr create-repository --repository-name <repo name> 
 ```
 
+```
+Example Output:
+
+{
+    "repository": {
+        "registryId": "1234567890",
+        "repositoryName": "jimage",
+        "repositoryArn": "arn:aws:ecr:us-east-1:1234567890:repository/jimage",
+        "createdAt": 1573744778.0,
+        "repositoryUri": "1234567890.dkr.ecr.us-east-1.amazonaws.com/jimage"
+    }
+}
+```
 
 Type in the following command in the terminal to login into ECR
 
@@ -122,10 +135,16 @@ aws ecr get-login --region <region> --no-include-email
 ```
 
 docker tag <Image ID> <repository URL>/<repo name>
+
+Example:
+docker tag d880d475808f 1234567890.dkr.ecr.us-east-1.amazonaws.com/jimage
 ```
 
 - [ ] Push your Jenkins image to ECR
 
 ```
-docker push <repository URL>/<repo name>
+docker push <repository URI>/<repo name>
+
+Example:
+docker push 1234567890.dkr.ecr.us-east-1.amazonaws.com/jimage
 ```
