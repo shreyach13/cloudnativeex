@@ -114,6 +114,9 @@ Type in the following command in the terminal to login into ECR
 aws ecr get-login --region <region> --no-include-email
 ```
 
+- [ ] Copy paste the value generated in your terminal 
+
+
 - [ ] Tag your Jenkins image 
 
 ```
