@@ -11,6 +11,8 @@ ii. To host the generated Jenkins image into ECR in AWS
 - [ ] Clone the contents of Docker folder into your local 
 - [ ] - Create a Dockerfile with the following:
 _____________________________________________________________Dockerfile____
+
+'''
 FROM ubuntu:18.04
 LABEL maintainer = “ ”                <---- (fill in your name)
 RUN apt-get update && \
@@ -19,6 +21,8 @@ ADD ./jenkins.war /usr/local/etc/
 ADD ./start_jenkins.sh /.
 RUN /bin/bash -c ‘chmod +x /start_jenkins.sh’
 CMD [ “/bin/sh”, “/start_jenkins.sh” ]
+
+'''
 ____________________________________________________________________________
 
 
