@@ -4,9 +4,9 @@
 
 The goals of this exercise are:
 
-* i.  To create a docker image of Jenkins 
-* ii. Host the docker image locally
-* iii. To host the generated Jenkins image into ECR in AWS
+* To create a docker image of Jenkins 
+* Host the docker image locally
+*iii. To host the generated Jenkins image into ECR in AWS
 
 - [ ] Clone the contents of Docker folder into your local 
 - [ ] - Create a Dockerfile with the following:
