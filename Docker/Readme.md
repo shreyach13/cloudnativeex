@@ -11,7 +11,7 @@ The goals of this exercise are:
 - [ ] Clone the contents of Docker folder into your local 
 - [ ] Create a Dockerfile with the following:
 
--
+
 _____________________________________________________________Dockerfile____
 
 ```
