@@ -12,7 +12,6 @@ The goals of this exercise are:
 - [ ] Create a Dockerfile with the following:
 
 
-_____________________________________________________________Dockerfile____
 
 ```
 FROM ubuntu:18.04
@@ -25,17 +24,26 @@ RUN /bin/bash -c ‘chmod +x /start_jenkins.sh’
 CMD [ “/bin/sh”, “/start_jenkins.sh” ]
 ```
 
-____________________________________________________________________________
-
 
 - [ ] Create a “start_jenkins.sh” start script
-_______________________________________________________start_jenkins.sh____
+
+```
 /usr/bin/java -jar /usr/local/etc/jenkins.war
-____________________________________________________________________________
+
+```
+
 - [ ] Download the “Jenkins.war” file to the build directory using the command:
+
+```
 wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+```
+
 - [ ] Building the container:
+
+```
 docker build --tag ubuntu_jenkins .
+```
+
 - [ ] Launch the container using:
 
 ```
