@@ -111,7 +111,7 @@ aws ecr create-repository --repository-name <repo name>
 Type in the following command in the terminal to login into ECR
 
 ```
-aws ecr get-login --region us-east-1 --no-include-email
+aws ecr get-login --region <region> --no-include-email
 ```
 
 - [ ] Tag your Jenkins image 
