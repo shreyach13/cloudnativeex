@@ -2,6 +2,8 @@
 
 ## Excercise:
 
+### Step 1
+
 The goals of this exercise are:
 
 * To create a docker image of Jenkins 
@@ -55,6 +57,9 @@ Our docker container is now up and running. We can check it using: ----- (check 
 ```
 docker ps
 ```
+
+### Step 2
+
 
 The next step is to add a volume to the docker container:
 
