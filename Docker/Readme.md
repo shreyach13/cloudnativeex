@@ -96,3 +96,32 @@ Launch using:
 ```
 docker-compose up
 ```
+
+### Step 3
+
+Upload your Jenkins image to ECR
+
+- [ ] Create your own ECR repo:
+
+```
+aws ecr create-repository --repository-name <repo name> 
+```
+
+
+Type in the following command in the terminal to login into ECR
+
+```
+aws ecr get-login --region us-east-1 --no-include-email
+```
+
+- [ ] Tag your Jenkins image 
+
+```
+docker tag <Image ID> 245733030947.dkr.ecr.us-east-1.amazonaws.com/<repo name>
+```
+
+- [ ] Push your Jenkins image to ECR
+
+```
+docker push 245733030947.dkr.ecr.us-east-1.amazonaws.com/jimage
+```
