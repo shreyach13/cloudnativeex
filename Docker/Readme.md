@@ -49,3 +49,36 @@ docker build --tag ubuntu_jenkins .
 docker run -p 8080:8080 -p 50000:50000 -it ubuntu_jenkins
 ```
 
+
+- [ ] Docker-compose - Building a Jenkins container with volumes
+
+
+Create a “docker-compose.yml” file.
+
+```
+version: ‘2’
+services:
+ jenkins:
+   image: ‘ubuntu_jenkins:latest’
+   labels:
+     kompose.service.type: nodeport
+   ports:
+     - ‘80:8080’
+     - ‘443:8443’
+     - ‘50000:50000’
+   volumes:
+     - ‘jenkins_data:/jenkins_config’
+volumes:
+ jenkins_data:
+   driver: local   
+``` 
+
+
+The “ubuntu_jenkins:latest” image had been created locally by myself earlier.
+
+
+Launch using:
+
+```
+docker-compose up
+```
