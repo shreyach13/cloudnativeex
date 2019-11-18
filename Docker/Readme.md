@@ -29,7 +29,6 @@ CMD [ “/bin/sh”, “/start_jenkins.sh” ]
 
 ```
 /usr/bin/java -jar /usr/local/etc/jenkins.war
-
 ```
 
 - [ ] Download the “Jenkins.war” file to the build directory using the command:
