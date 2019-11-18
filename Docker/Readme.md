@@ -9,7 +9,9 @@ The goals of this exercise are:
 * To host the generated Jenkins image into ECR in AWS
 
 - [ ] Clone the contents of Docker folder into your local 
-- [ ] - Create a Dockerfile with the following:
+- [ ] Create a Dockerfile with the following:
+
+-
 _____________________________________________________________Dockerfile____
 
 ```
