@@ -50,6 +50,15 @@ docker run -p 8080:8080 -p 50000:50000 -it ubuntu_jenkins
 ```
 
 
+Our docker container is now up and running. We can check it using: ----- (check if docker ps command)
+
+```
+docker ps
+```
+
+The next step is to add a volume to the docker container:
+
+
 - [ ] Docker-compose - Building a Jenkins container with volumes
 
 
