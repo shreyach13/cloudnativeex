@@ -117,11 +117,12 @@ aws ecr get-login --region us-east-1 --no-include-email
 - [ ] Tag your Jenkins image 
 
 ```
-docker tag <Image ID> 245733030947.dkr.ecr.us-east-1.amazonaws.com/<repo name>
+
+docker tag <Image ID> <repository URL>/<repo name>
 ```
 
 - [ ] Push your Jenkins image to ECR
 
 ```
-docker push 245733030947.dkr.ecr.us-east-1.amazonaws.com/jimage
+docker push <repository URL>/<repo name>
 ```
