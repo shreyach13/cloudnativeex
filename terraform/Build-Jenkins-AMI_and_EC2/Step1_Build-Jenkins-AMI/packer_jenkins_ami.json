@@ -30,9 +30,7 @@
     "type": "shell",
     "scripts": 
        [
-       "./install_make.sh",
-       "./install_packer.sh",
-       "./install_kubectl.sh"
+       "./install_packer.sh"
        ]
    },
    {
