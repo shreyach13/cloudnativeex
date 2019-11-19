@@ -5,12 +5,31 @@
   package:
     name: default-jre
     state: present
-#- name: install Python3 setuptools package
-#  become: true
-#  package:
-#    name: python-setuptools
-#    state: present
-#- name: install Python3 package
+- name: Adding the ansible repository
+  apt_repository:
+    repo: ppa:ansible/ansible
+- name: install Ansible
+  become: true
+  package: 
+    name: ansible
+    state: present
+- name: Install prerequisites for Docker
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2' ,'software-properties-common']
+    update_cache: yes
+- name: Add Docker GPG key
+  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+- name: Add Docker APT repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+- name: Install Docker
+  apt:
+    name: docker-ce
+    update_cache: yes
+
+
+
+    #- name: install Python3 package
 #  become: true
 #  package:
 #    name: python3

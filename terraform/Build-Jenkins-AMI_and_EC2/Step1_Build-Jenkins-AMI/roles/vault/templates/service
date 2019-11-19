@@ -1,8 +1,0 @@
-[Unit]
-Description=Foo
-
-[Service]
-ExecStart=/usr/local/bin/vault server -config /vault.cfg
-
-[Install]
-WantedBy=multi-user.target
