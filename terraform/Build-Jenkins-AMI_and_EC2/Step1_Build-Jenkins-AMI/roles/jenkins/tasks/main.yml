@@ -57,6 +57,22 @@
       - kubeadm
       - kubectl
 
+- name: Install wget
+  apt:
+    name: wget
+    update_cache: yes
+
+    #- name: Download Terraform
+    #  get_url:
+    #    url: https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip
+    #    dest: /tmp
+    #  when: "'64' in ansible_architecture and 'Linux' == ansible_system"
+
+- name: Unarchive Terraform
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip
+    #    src: /tmp/terraform_0.12.16_linux_amd64.zip
+    dest: /usr/local/bin
 
 #- name: install Python3 package
 #  become: true
