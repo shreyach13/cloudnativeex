@@ -1,14 +1,27 @@
-Packer area to create a jenkins ec2 instance using an ansible role
+# Exercise 1
+## Build Jenkins Server With Pre-Installed Ansible, Docker, Packer, Kubernetes and aws-iam-authenticator
 
-Packer image currently creates an AMI with a Name tag Blue-team-jenkins+A+D+K+T
+- [ ] The aim of this exercise is to build a server which will have pre-installed: Jenkins, Ansible, Docker, Packer, Kubernetes and aws-iam-authenticator
 
-Jenkins in configured via the jenkins Ansible role.
+# Step 1
 
-The following tools are currently provisioned using the relevant install_$TOOL.sh script (should look at ansible roles with ore time)
+- [ ] Pull the latest code from the master branch
+- [ ] Open main.yml file in roles/jenkins/tasks folder
+- [ ] Read the file to understand all the modules that will be installed in the AMI
+- [ ] Open packer_jenkins_ami.json file
+- [ ] Change the ami name if you wish to:
+```
+"ami_name": "Jenkins-Image-{{timestamp}}"
+```
 
-1. Ansible
-2. Docker
-3. Kubectl
-4. Terraform (/usr/local/bin)
-5. Packer (/usr/local/bin)
-6. aws-iam-authenticator (/usr/local/bin)
+- [ ] Run the packer validate command:
+```
+packer validate packer_jenkins_ami.json
+```
+
+- [ ] Run the packer build command:
+
+```
+packer build packer_jenkins_ami.json
+```
+
