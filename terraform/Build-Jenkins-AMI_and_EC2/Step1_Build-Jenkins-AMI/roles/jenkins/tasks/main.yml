@@ -4,15 +4,29 @@
   apt:
     update_cache: yes
 
-- name: Install wget
-  apt:
-    name: wget
-    update_cache: yes
 
-- name: Install Unzip
+- name: Install wget, curl, unzip, make
   apt:
-    name: unzip
+    name: "{{ util_packages }}"
+    state: present
     update_cache: yes
+  vars:
+    util_packages:
+      - wget
+      - unzip
+      - make
+      - curl
+
+- name: Download aws-iam-authenticator
+  get_url: url="https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator"
+           dest="/usr/local/src/aws-iam-authenticator"
+
+- name: Install the aws-iam-authenticator
+  copy:
+    src: /usr/local/src/aws-iam-authenticator
+    dest: /usr/local/bin/aws-iam-authenticator
+    remote_src: yes 
+    mode: '0755'
 
 - name: Install Java runtime environment
   become: true
@@ -45,11 +59,6 @@
 - name: Install Docker
   apt:
     name: docker-ce
-    update_cache: yes
-
-- name: Install make
-  apt:
-    name: make
     update_cache: yes
 
 - name: Adding apt signing key for Kubernetes
