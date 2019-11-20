@@ -68,12 +68,33 @@
     #    dest: /tmp
     #  when: "'64' in ansible_architecture and 'Linux' == ansible_system"
 
-- name: Unarchive Terraform
-  unarchive:
-    src: https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip
+    #- name: Unarchive Terraform
+    #  unarchive:
+    #    src: https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip
     #    src: /tmp/terraform_0.12.16_linux_amd64.zip
-    dest: /usr/local/bin
+    #    dest: /usr/local/bin
 
+
+- name: Determine Terraform checksums
+  uri: url="https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_SHA256SUMS"
+       method="GET"
+       return_content=True
+  register: terraform_checksums
+
+
+- name: Download Terraform
+  get_url: url="https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip"
+           dest="/usr/local/src/terraform_0.12.16_linux_amd64.zip"
+           checksum="sha256:{{ item.split(' ') | first }}"
+  with_items: "{{ terraform_checksums.content.split('\n') | select('search', 'linux_amd64') | list | first }}"
+  register: terraform_downloaded
+
+
+- name: Extract and install Terraform
+  unarchive: src="/usr/local/src/terraform_0.12.16_linux_amd64.zip"
+             dest=/usr/local/bin
+             copy=no
+             #  when: current_terraform_version.rc != 0 or terraform_downloaded | changed
 #- name: install Python3 package
 #  become: true
 #  package:
@@ -89,7 +110,7 @@
     url: 'http://mirrors.jenkins.io/war-stable/latest/jenkins.war'
     dest: /usr/local/etc
 
-- name: Setup Jenkins service - NB - service started in handlers/main.ymal so doesnt need path
+- name: Setup Jenkins service - NB - service started in handlers/main.yml so doesnt need path
   template:
     dest: /etc/systemd/system/jenkins.service
     src: jenkins.service
