@@ -25,15 +25,7 @@
        "Name": "Jenkins-Server"
     }
   }],
-  "provisioners": [
-   {
-    "type": "shell",
-    "scripts": 
-       [
-       "./install_packer.sh"
-       ]
-   },
-   {
+  "provisioners": [{
       "type": "ansible",
       "playbook_file": "./jenkins.yml",
       "extra_arguments": [ "-b" ]

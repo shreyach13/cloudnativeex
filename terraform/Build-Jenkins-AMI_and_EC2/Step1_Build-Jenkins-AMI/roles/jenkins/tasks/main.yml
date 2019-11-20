@@ -1,6 +1,20 @@
 ---
 # tasks file for roles/jenkins
-- name: install Java runtime environment
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+- name: Install wget
+  apt:
+    name: wget
+    update_cache: yes
+
+- name: Install Unzip
+  apt:
+    name: unzip
+    update_cache: yes
+
+- name: Install Java runtime environment
   become: true
   package:
     name: default-jre
@@ -20,11 +34,14 @@
   apt:
     name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2' ,'software-properties-common']
     update_cache: yes
+
 - name: Add Docker GPG key
   apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+
 - name: Add Docker APT repository
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+
 - name: Install Docker
   apt:
     name: docker-ce
@@ -35,7 +52,7 @@
     name: make
     update_cache: yes
 
-- name: Add apt signing key for Kubernetes
+- name: Adding apt signing key for Kubernetes
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     state: present
@@ -57,23 +74,15 @@
       - kubeadm
       - kubectl
 
-- name: Install wget
-  apt:
-    name: wget
-    update_cache: yes
+- name: Download Packer
+  get_url: url="https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_amd64.zip"
+           dest="/usr/local/src/packer_1.4.4_linux_amd64.zip"
 
-    #- name: Download Terraform
-    #  get_url:
-    #    url: https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip
-    #    dest: /tmp
-    #  when: "'64' in ansible_architecture and 'Linux' == ansible_system"
 
-    #- name: Unarchive Terraform
-    #  unarchive:
-    #    src: https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip
-    #    src: /tmp/terraform_0.12.16_linux_amd64.zip
-    #    dest: /usr/local/bin
-
+- name: Extract and Install Packer
+  unarchive: src="/usr/local/src/packer_1.4.4_linux_amd64.zip"
+             dest=/usr/local/bin
+             copy=no
 
 - name: Determine Terraform checksums
   uri: url="https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_SHA256SUMS"
@@ -94,23 +103,13 @@
   unarchive: src="/usr/local/src/terraform_0.12.16_linux_amd64.zip"
              dest=/usr/local/bin
              copy=no
-             #  when: current_terraform_version.rc != 0 or terraform_downloaded | changed
-#- name: install Python3 package
-#  become: true
-#  package:
-#    name: python3
-#    state: present
-#- name: install pip packages
-#  pip:
-#    name: virtualenv
-#    state: present
-#    executable: pip3
+
 - name: Download jenkins WAR file into /usr/local/etc
   get_url:
     url: 'http://mirrors.jenkins.io/war-stable/latest/jenkins.war'
     dest: /usr/local/etc
 
-- name: Setup Jenkins service - NB - service started in handlers/main.yml so doesnt need path
+- name: Setup Jenkins service - service started in handlers/main.yml so doesnt need path
   template:
     dest: /etc/systemd/system/jenkins.service
     src: jenkins.service
@@ -126,7 +125,7 @@
   wait_for:
     path: /root/.jenkins/secrets/initialAdminPassword
 
-- name:  Display jenkins password
+- name:  Display Jenkins Password
   shell: cat /root/.jenkins/secrets/initialAdminPassword
   register: initialAdminPassword
 
@@ -135,7 +134,7 @@
 #   msg: InitialAdminPaaword {{ initialAdminPassword.stdout }}
 #    verbosity: 2
 
-- name: Start jenkins at boot
+- name: Start Jenkins at boot
   systemd: 
     enabled: true
     name: jenkins
