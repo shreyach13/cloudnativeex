@@ -1,5 +1,5 @@
 variable "owner" {
-  default = "DSW"
+  default = "Shreya"
 }
 
 variable "from_port" {

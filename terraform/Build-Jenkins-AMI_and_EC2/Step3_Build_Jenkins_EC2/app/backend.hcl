@@ -1,3 +1,3 @@
-bucket = "dsw-terraform-s3-bucket"
-region = "eu-central-1"
+bucket = "shreya-terraform-s3-bucket"
+region = "us-east-1"
 encrypt = true

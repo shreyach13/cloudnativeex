@@ -1,5 +1,5 @@
 terraform {
   backend "s3" {
-    key = "core/terraform.tfstate"
+    key = "tf-statefile/jenkins/terraform.tfstate"
   }
 }
