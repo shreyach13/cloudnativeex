@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "Blue-Team-Terraform-Jenkins" {
+resource "aws_s3_bucket" "shreya-terraform-bucket" {
   bucket = var.bucket_name
-  region = "eu-central-1"
+  region = "us-east-1"
   tags = {
     Name  = var.name_tag
     Owner = var.owner_tag

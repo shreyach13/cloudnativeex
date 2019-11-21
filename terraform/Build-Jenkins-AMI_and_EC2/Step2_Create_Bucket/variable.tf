@@ -1,5 +1,5 @@
 variable "bucket_name" {
-  default = "dsw-terraform-s3-bucket"
+  default = "shreya-terraform-s3-bucket"
 }
 
 variable "name_tag" {
@@ -7,7 +7,7 @@ variable "name_tag" {
 }
 
 variable "owner_tag" {
-  default = "DSW"
+  default = "Shreya"
 }
 
 variable "aws_region" {
