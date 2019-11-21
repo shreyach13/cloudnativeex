@@ -1,9 +1,9 @@
 variable "owner" {
-  default = "Blue Team"
+  default = "Shreya"
 }
 
 variable "aws_account_owner" {
-  default = "484926329924"
+  default = "245733030947"
 }
 
 variable "from_port" {

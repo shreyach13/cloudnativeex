@@ -1,11 +1,11 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = "us-east-1"
 }
 
-resource "aws_security_group" "dsw-sg" {
-  name = "dsw-sg"
+resource "aws_security_group" "shreya-sg" {
+  name = "shreya-sg"
   tags = {
-    Name  = "DSW SG"
+    Name  = "Shreya SG"
     owner = var.owner
   }
   ingress {
