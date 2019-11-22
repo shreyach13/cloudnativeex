@@ -15,7 +15,7 @@ contained in this repo.
 - [ ] Clone each folder into your own local machine to use it.
 
 
-### Pre-requisite softwares that needs to be installed:
+### Pre-requisite(s):
 
 - [ ] The exercises are written presuming that it will be done in a MacBook and that the user
 will have access to AWS.
@@ -34,4 +34,7 @@ will have access to AWS.
   * kubectx
   * python
   * Atom / VS Code
+
+- [ ] The user must have GitHub account already. For basics of Git, please refer to the link below:
+https://guides.github.com/introduction/git-handbook/
 
