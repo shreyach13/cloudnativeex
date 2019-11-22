@@ -21,11 +21,18 @@
   get_url: url="https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator"
            dest="/usr/local/src/aws-iam-authenticator"
 
+
+- name: Download awscli
+  apt:
+    name: awscli
+    update_cache: yes
+
+
 - name: Install the aws-iam-authenticator
   copy:
     src: /usr/local/src/aws-iam-authenticator
     dest: /usr/local/bin/aws-iam-authenticator
-    remote_src: yes 
+    remote_src: yes
     mode: '0755'
 
 - name: Install Java runtime environment
@@ -40,7 +47,7 @@
 
 - name: Install Ansible
   become: true
-  package: 
+  package:
     name: ansible
     state: present
 
@@ -67,7 +74,7 @@
     state: present
 
 - name: Adding apt repository for Kubernetes
-  apt_repository: 
+  apt_repository:
     repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
     state: present
     filename: kubernetes.list
@@ -126,7 +133,7 @@
   notify:
     - restart jenkins service
 
-# Use the flush_handlers 
+# Use the flush_handlers
 - name: Force all notified handlers to run at this point, not waiting for normal sync points
   meta: flush_handlers
 
@@ -144,10 +151,10 @@
 #    verbosity: 2
 
 - name: Start Jenkins at boot
-  systemd: 
+  systemd:
     enabled: true
     name: jenkins
-  
+
 ##- name: After 5s, Wait for Jenkins port 8080 to become open on the host
 ##  wait_for:
 ##    host: "{{ inventory_hostname }}"
@@ -165,4 +172,3 @@
 #  wait_for:
 #    path: /var/log/jenkins.log
 #    search_regex: "INFO: Jenkins is fully up and running"
-
