@@ -1,4 +1,4 @@
-# Create a s3 Bucket in AWS using Terraform
+# Create a S3 Bucket in AWS using Terraform
 
 This bucket will be used to store the terraform state file of our EC2 instance, which will be created in Step 3.
 
