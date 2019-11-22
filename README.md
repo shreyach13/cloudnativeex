@@ -15,7 +15,7 @@ contained in this repo.
 - [ ] Clone each folder into your own local machine to use it.
 
 
-### Pre-requisite software that needs to be installed:
+### Pre-requisite softwares that needs to be installed:
 
 - [ ] The exercises are written presuming that it will be done in a MacBook and that the user
 will have access to AWS.
@@ -33,4 +33,5 @@ will have access to AWS.
   * minikube
   * kubectx
   * python
+  * Atom / VS Code
 
