@@ -6,7 +6,7 @@ pipeline {
        stage('Initialise') {
            steps {
                   sh 'rm -rf cloudnativeex'
-                  sh 'git clone git@github.com:shreyach13/cloudnativeex.git'
+                  sh 'git clone https://github.com/shreyach13/cloudnativeex.git'
                   echo "Initialising job - cloning repo"
                   dir("cloudnativeex/Packer/"){
                     sh 'pwd'
