@@ -1,5 +1,7 @@
 # cloudnativeex
 
+This repo is intended to be used by anyone who intends to have a basic understanding how the Cloud Native tools work.
+
 ## Cloud Native Tools Exercises
 
 - [ ] This repo contains exercises for basic understanding of Cloud Native tools. This repo is to be used
