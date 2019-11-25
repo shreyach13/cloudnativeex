@@ -38,3 +38,26 @@ will have access to AWS.
 - [ ] The user must have GitHub account already. For basics of Git, please refer to the link below:
 https://guides.github.com/introduction/git-handbook/
 
+### How to Install Software in Mac:
+
+- [ ] Install Homebrew:
+
+* Open the “Terminal” application, found in /Applications/Utilities/
+
+* Enter the following command into a single line of the terminal:
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+* Hit Return and you’ll see a series of lines about what the script will install and where, hit Return again to agree or hit Escape to cancel
+
+* Enter the administrator password (required by sudo execution) to begin installation
+
+* When complete, you will see an “Installation successful!” message.
+
+- [ ] To install any package (mentioned above) using brew :
+
+```
+brew install
+```
+
