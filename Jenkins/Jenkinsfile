@@ -18,7 +18,8 @@ pipeline {
         dir("cloudnativeex/Packer/"){
           sh 'pwd'
           echo "Validating PACKER json..."
-          sh 'packer validate ami.json'
+          sh 'packer validate ami.json > packer_validate_out.txt'
+          sh 'cat packer_validate_out.txt'
         }
         }
       }
