@@ -2,11 +2,11 @@ provider "aws" {
   region = "us-east-1"
 }
 
-data "aws_ami" "shreya-jenkins-server" {
+data "aws_ami" "shreya-ami-task" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["shreya-jenkins-server*"]
+    values = ["shreya-ami-task*"]
   }
   owners = [var.aws_account_owner]
 }
