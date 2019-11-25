@@ -28,6 +28,7 @@ pipeline {
         steps {
           dir("cloudnativeex/Packer/"){
             sh 'packer build ami.json > packer_build.txt'
+            sh 'cat packer_build.txt'
           }
         }
       }
