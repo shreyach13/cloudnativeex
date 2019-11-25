@@ -38,7 +38,7 @@ will have access to AWS.
 - [ ] The user must have GitHub account already. For basics of Git, please refer to the link below:
 https://guides.github.com/introduction/git-handbook/
 
-### How to Install Software in Mac:
+### How to Install Required Packages in Mac:
 
 - [ ] Install Homebrew:
 
