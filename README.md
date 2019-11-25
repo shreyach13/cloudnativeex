@@ -58,6 +58,7 @@ https://guides.github.com/introduction/git-handbook/
 - [ ] To install any package (mentioned above) using brew :
 
 ```
-brew install
+brew install <package name>
+example: brew install wget
 ```
 
