@@ -6,7 +6,7 @@ data "aws_ami" "shreya-ami-task" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["shreya-ami-task*"]
+    values = ["Jenkins-Image*"]
   }
   owners = [var.aws_account_owner]
 }
@@ -17,7 +17,7 @@ resource "aws_key_pair" "Shreya_KP" {
 }
 
 resource "aws_instance" "shreya-jenkins-webserver" {
-  ami           = "${data.aws_ami.shreya-jenkins-server.id}"
+  ami           = data.aws_ami.shreya-ami-task.id
   instance_type = "t2.micro"
   /*iam_instance_profile = var.iam_role*/
   key_name = "Shreya_KP"
