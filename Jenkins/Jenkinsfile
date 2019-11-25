@@ -13,5 +13,15 @@ pipeline {
                   }
                 }
            }
+      stage('Validate') {
+        steps {
+        dir("cloudnativeex/Packer/"){
+          sh 'pwd'
+          echo "Validating PACKER json..."
+          sh 'packer validate ami.json'
+        }
+        }
+      }
+
            }
            }
