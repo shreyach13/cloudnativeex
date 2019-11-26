@@ -19,7 +19,7 @@
 		},
 		"instance_type": "t2.micro",
 		"ssh_username": "ubuntu",
-		"ami_name": "shreya_ami_task",
+		"ami_name": "shreya-jenkins-server-{{timestamp}}",
 		"user_data": "nohup vault server -dev &"
 	}],
 	"provisioners": [{
