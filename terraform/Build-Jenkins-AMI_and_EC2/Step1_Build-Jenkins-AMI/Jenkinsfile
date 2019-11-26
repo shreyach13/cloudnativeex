@@ -19,7 +19,7 @@ pipeline {
                       echo "Validating PACKER json..."
                       sh 'packer validate packer_jenkins_ami.json'
                   }
-		      
+
             }
         }
         stage('Deploy') {
