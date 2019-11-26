@@ -1,5 +1,5 @@
 - hosts: all
   become: yes
-  sudo: True
+  become_method: sudo
   roles:
     - jenkins
