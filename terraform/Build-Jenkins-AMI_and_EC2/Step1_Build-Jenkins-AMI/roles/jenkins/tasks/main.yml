@@ -1,9 +1,8 @@
 ---
 # tasks file for roles/jenkins
 - name: Run the equivalent of "apt-get update" as a separate step
-  become: yes
   apt:
-    update_cache: no
+    update_cache: yes
 
 - name: Install wget, curl, unzip, make
   apt:
