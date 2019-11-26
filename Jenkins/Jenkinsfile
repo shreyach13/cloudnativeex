@@ -8,14 +8,14 @@ pipeline {
                   sh 'rm -rf cloudnativeex'
                   sh 'git clone https://github.com/shreyach13/cloudnativeex.git'
                   echo "Initialising job - cloning repo"
-                  dir("cloudnativeex/Packer/"){
+                  dir("cloudnativeex/terraform/Build-Jenkins-AMI_and_EC2/Step1_Build-Jenkins-AMI/"){
                     sh 'pwd'
                   }
                 }
            }
       stage('Validate') {
         steps {
-        dir("cloudnativeex/Packer/"){
+        dir("cloudnativeex/terraform/Build-Jenkins-AMI_and_EC2/Step1_Build-Jenkins-AMI/"){
           sh 'pwd'
           sh 'ls -al'
           echo "Validating PACKER json..."
@@ -26,7 +26,7 @@ pipeline {
       }
       stage('Build') {
         steps {
-          dir("cloudnativeex/Packer/"){
+          dir("cloudnativeex/terraform/Build-Jenkins-AMI_and_EC2/Step1_Build-Jenkins-AMI/"){
             sh 'packer build ami.json > packer_build.txt'
             sh 'cat packer_build.txt'
           }
