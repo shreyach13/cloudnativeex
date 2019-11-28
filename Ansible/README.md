@@ -6,7 +6,7 @@
 
 ## Exercises
 
-- Create an ansible.cfg file containing the following:
+- Create an `ansible.cfg` file containing the following:
   ```
   $ cat ansible.cfg
   [defaults]
@@ -14,7 +14,7 @@
   inventory = ./inventory
   ```
 
-- Create your inventory file. The group that the host needs to part of is `ci`.
+- Create your inventory file. The group that the host needs to be part of is `ci`.
 
 - Create an EC2 instance of size `t2.micro`. The public IP of this host can be found in the AWS console.
 
@@ -94,7 +94,7 @@
       state: restarted
   ```
 
-- Modify required tasks to restart Jenkins service if it is required using the `notify` module. You will need to ask yourself the following questions to make sure the restart happens every time it is required:
+- Modify the required tasks to restart Jenkins service if it is required using the `notify` module. You will need to ask yourself the following question to make sure the restart happens every time it is required:
 
   - When would you need to restart jenkins?
 
@@ -114,8 +114,8 @@
 
   You will need to ask yourself what is defined as 'done' for a jenkins server to be up and running.
 
-- A few ideas are:
+  - A few ideas are:
 
-  Jenkins is listening to the required port, using the `wait_for` module.
+    Jenkins is listening to the required port, using the `wait_for` module.
 
-  Jenkins url responds with an expected response using the `uri` module.
+    Jenkins url responds with an expected response using the `uri` module.
