@@ -62,5 +62,15 @@ brew install <package name>
 example: brew install wget
 ```
 
-- [ ]  To install aws cli
+- [ ]  To install aws cli:
+
+
 https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html
+
+
+- [ ] To configure the AWS CLI:
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+
+
+
