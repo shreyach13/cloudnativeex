@@ -15,7 +15,7 @@ contained in this repo.
 - To use it, clone the entire repo to your own local machine. Alternatively, in case you want to work on a specific exercise, clone that individual folder to your local machine.
 
 
-### Pre-requisite(s):
+### Pre-requisite(s)
 
 - The exercises have been written presuming that they will be done on a MacBook and that the user
 has access to AWS.
@@ -38,7 +38,7 @@ has access to AWS.
 - The user should already have a GitHub account. For the basics of Git, please refer to this link:
 https://guides.github.com/introduction/git-handbook/
 
-### How to Install The Required Packages on a MacBook:
+### How to Install The Required Packages on a MacBook
 
 - Installing Homebrew:
 
@@ -71,6 +71,3 @@ https://guides.github.com/introduction/git-handbook/
 - To configure the AWS CLI:
 
   https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
-
-
-
