@@ -44,7 +44,7 @@ https://guides.github.com/introduction/git-handbook/
 
   * Open the "`Terminal`" application, found in `/Applications/Utilities/`
 
-  * Enter the following command into a single line on the terminal:
+  * Enter the following command into a single line on the terminal to install homebrew:
     ```sh
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     ```
@@ -57,7 +57,7 @@ https://guides.github.com/introduction/git-handbook/
 
   * For more information on Homebrew, see https://brew.sh
 
-- To install any of the packages mentioned above using brew :
+- To install any of the pre-requisite packages mentioned above using brew :
     ```
     brew install <package name>
     example: brew install wget
