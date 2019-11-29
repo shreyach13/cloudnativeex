@@ -1,23 +1,23 @@
 
 # Packer
 
-More information in https://www.packer.io/
+More information on Packer can be found at https://www.packer.io/
 
-Documentation in https://www.packer.io/docs/index.html
+Documentation for Packer can be found here: https://www.packer.io/docs/index.html
 
 ## Exercises
 
-The goal of this exercise is to create an AWS AMI image with Jenkins Installed.
-- [ ] Change the AMI name to something that you can identify.
-Everyone will create AMI images in the same region, so try to be creating with the name
-to make sure you can trace which image is yours.
+The goal of this exercise is to create an AWS AMI image with Jenkins installed.
 
-Remember, its easier to make the name of the image descriptive.
+- Change the AMI name to something that you can identify.
 
+  *Everyone will create AMI images in the same region, so make sure to use a name
+that enables you to easily trace your images.*
 
-- [ ] Navigate to the directory where ami.json is downloaded.
+  *And remember, it is easier to make the name of the image descriptive.*
 
-- [ ] Run "packer validate" to valdiate the packer code
+- Navigate to the directory where `ami.json` was downloaded.
 
-- [ ] Run "packer build" to build you AMI. Check in AWS console for the new ami created (make sure that you are in correct region)
+- Run `packer validate` to validate the packer code.
 
+- Run `packer build` to build you AMI. Check in the AWS console for the newly creaated  ami (make sure that you are in the correct region).
