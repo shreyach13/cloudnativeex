@@ -1,36 +1,41 @@
 #!/usr/bin/env groovy
 
-pipeline {
-   agent any
-   stages {
-       stage('Initialise') {
-           steps {
-                  sh 'rm -rf cloudnativeex'
-                  sh 'git clone https://github.com/shreyach13/cloudnativeex.git'
-                  echo "Initialising job - cloning repo"
-                  dir("cloudnativeex/terraform/Build-Jenkins-AMI_and_EC2/Step1_Build-Jenkins-AMI/"){
-                    sh 'pwd'
-                  }
-                }
-           }
-      stage('Validate') {
-        steps {
-        dir("cloudnativeex/terraform/Build-Jenkins-AMI_and_EC2/Step1_Build-Jenkins-AMI/"){
-          sh 'pwd'
-          sh 'ls -al'
-          echo "Validating PACKER json..."
-          sh 'packer validate packer_jenkins_ami.json > packer_validate_out.txt'
-          sh 'cat packer_validate_out.txt'
-        }
-        }
-      }
-      stage('Build') {
-        steps {
-          dir("cloudnativeex/terraform/Build-Jenkins-AMI_and_EC2/Step1_Build-Jenkins-AMI/"){
-            sh 'packer build packer_jenkins_ami.json'
-          }
-        }
-      }
+REPOSITORY_ADDRESS = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+PROJECT_NAME = "jenkins-withtools-docker"
+GITHUB_ID = "shreyach13"
 
-           }
-           }
+pipeline {
+    agent any
+    stages {
+        stage('Initialise') {
+            steps {
+		      sh "rm -rf ${PROJECT_NAME} "
+		      sh "git clone https://github.com/${GITHUB_ID}/cloudnativeex/${PROJECT_NAME}.git"
+		      echo "Initialising job - cloning ${PROJECT_NAME} repository"
+                      dir("${PROJECT_NAME}") {
+                      sh 'pwd'
+                  }
+            }
+        }
+        stage('Build') {
+            steps {
+                      dir("${PROJECT_NAME}") {
+                      echo "Building the ${PROJECT_NAME} Container"
+                      sh "docker build --tag ${PROJECT_NAME} ."
+                  }	      
+            }
+        }
+        stage('Deploy') {
+            steps {
+                     dir("${PROJECT_NAME}") {
+                     echo "Uploading ${PROJECT_NAME} to AWS"
+                     sh "aws ecr describe-repositories --repository-names ${PROJECT_NAME} || aws ecr create-repository --repository-name ${PROJECT_NAME}"
+                     sh "aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION} | sh"
+                     sh "docker tag ${PROJECT_NAME}:latest ${REPOSITORY_ADDRESS}/${PROJECT_NAME}:latest"
+                     sh "docker push ${REPOSITORY_ADDRESS}/${PROJECT_NAME}"
+                }
+            }
+        }
+    }
+}
+
